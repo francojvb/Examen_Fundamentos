@@ -10,6 +10,10 @@ void Window::swapBuffer() {
 	SDL_GL_SwapWindow(_window);
 }
 
+void Window::setGLColor(GLfloat r, GLfloat g, GLfloat b) {
+	glClearColor(r, g, b, 1.0f);
+}
+
 int Window::create(string windowName, int screenWidth, int screenHeight, unsigned int currentFlags) {
 	Uint32 flags = SDL_WINDOW_OPENGL;
 

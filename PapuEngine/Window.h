@@ -22,6 +22,7 @@ public:
 	void swapBuffer();
 	int getScreenWidth() { return _screenWidth; };
 	int getScreenHeight() { return _screenHeight; };
+	void setGLColor(GLfloat r, GLfloat g, GLfloat b);
 	int create(string windowName, int screenWidth, int screenHeight, unsigned int currentFlags);
 };
 

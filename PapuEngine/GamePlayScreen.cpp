@@ -14,8 +14,10 @@ GamePlayScreen::GamePlayScreen(Window* window) :
 	_window(window){
 	_screenIndex = SCREEN_INDEX_GAMEPLAY;
 	_currenLevel = 0;
+	_window->setGLColor(0.050f, 0.253f, 0.050f);
 	_gamePlay = true;
 	_gameRetry = false;
+	cout << "Flechas para moverse, N para acercar camara, M para alejar la camara." << endl;
 }
 
 GamePlayScreen::~GamePlayScreen(){
@@ -45,7 +47,7 @@ void GamePlayScreen::build() {
 	cout << "Pos y" << _levels[_currenLevel]->getHeight() << endl;
 
 	//TODO creacion de aliens
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 10; i++)
 	{
 		_zombies.push_back(new Zombie());
 		glm::vec2 pos(randPosX(randomEngine) * TILE_WIDTH, randPosY(randomEngine) * TILE_WIDTH);		
@@ -249,10 +251,10 @@ void GamePlayScreen::checkInput() {
 			_inputManager.releaseKey(event.button.button);
 			break;
 		}
-		if (_inputManager.isKeyDown(SDLK_z)) {
+		if (_inputManager.isKeyDown(SDLK_n)) {
 			_camera.setScale(_camera.getScale() + SCALE_SPEED);
 		}
-		if (_inputManager.isKeyDown(SDLK_x)) {
+		if (_inputManager.isKeyDown(SDLK_m)) {
 			_camera.setScale(_camera.getScale() - SCALE_SPEED);
 		}
 		
@@ -272,15 +274,15 @@ void GamePlayScreen::updatePuntaje(int tecla, int tipo) {
 		switch (tipo)
 		{
 		case 1:
-			cout << "Tecla q y zombie amarillo" << endl;
+			cout << "Tecla Q y zombie amarillo" << endl;
 			puntaje += 10;
 			break;
 		case 2:
-			cout << "Tecla q y zombie rojo" << endl;
+			cout << "Tecla Q y zombie rojo" << endl;
 			puntaje -= 10;
 			break;
 		case 3:
-			cout << "Tecla q y zombie verde" << endl;
+			cout << "Tecla Q y zombie verde" << endl;
 			puntaje -= 20;
 			break;
 		default:
@@ -291,15 +293,15 @@ void GamePlayScreen::updatePuntaje(int tecla, int tipo) {
 		switch (tipo)
 		{
 		case 1:
-			cout << "Tecla w y zombie amarillo" << endl;
+			cout << "Tecla W y zombie amarillo" << endl;
 			puntaje += 15;
 			break;
 		case 2:
-			cout << "Tecla w y zombie rojo" << endl;
+			cout << "Tecla W y zombie rojo" << endl;
 			puntaje += 20;
 			break;
 		case 3:
-			cout << "Tecla w y zombie verde" << endl;
+			cout << "Tecla W y zombie verde" << endl;
 			puntaje -= 15;
 			break;
 		default:
@@ -310,15 +312,15 @@ void GamePlayScreen::updatePuntaje(int tecla, int tipo) {
 		switch (tipo)
 		{
 		case 1:
-			cout << "Tecla e y zombie amarillo" << endl;
+			cout << "Tecla E y zombie amarillo" << endl;
 			puntaje /= 2;
 			break;
 		case 2:
-			cout << "Tecla e y zombie rojo" << endl;
+			cout << "Tecla E y zombie rojo" << endl;
 			puntaje -= 5;
 			break;
 		case 3:
-			cout << "Tecla e y zombie verde" << endl;
+			cout << "Tecla E y zombie verde" << endl;
 			puntaje *= 2;
 			break;
 		default:
